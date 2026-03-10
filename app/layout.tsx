@@ -4,9 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LMS Solution",
+  title: "My Academy",
   description:
-    "LMS Solution that enables delivery of content in a fun and engaging manner!",
+    "Your online learning platform — courses, quizzes, certificates, and more.",
 };
 
 export default function RootLayout({
@@ -16,10 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`$antialiased`}>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >

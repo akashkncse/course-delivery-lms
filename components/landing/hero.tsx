@@ -10,7 +10,7 @@ interface HeroProps {
   platformName?: string;
 }
 
-export function Hero({ heroImageUrl, platformName = "LearnHub" }: HeroProps) {
+export function Hero({ heroImageUrl, platformName = "My Academy" }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-16">
       {/* Background gradient */}
@@ -82,39 +82,6 @@ export function Hero({ heroImageUrl, platformName = "LearnHub" }: HeroProps) {
                   Browse Courses
                 </Link>
               </Button>
-            </motion.div>
-
-            {/* Social proof */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-10 flex items-center gap-4"
-            >
-              <div className="flex -space-x-2.5">
-                {[
-                  "bg-blue-500",
-                  "bg-emerald-500",
-                  "bg-amber-500",
-                  "bg-purple-500",
-                ].map((color, i) => (
-                  <div
-                    key={i}
-                    className={`flex size-9 items-center justify-center rounded-full border-2 border-background text-xs font-bold text-white ${color}`}
-                  >
-                    {String.fromCharCode(65 + i)}
-                  </div>
-                ))}
-              </div>
-              <div className="text-sm">
-                <span className="font-semibold text-foreground">
-                  Join learners
-                </span>
-                <span className="text-muted-foreground">
-                  {" "}
-                  already leveling up
-                </span>
-              </div>
             </motion.div>
           </div>
 

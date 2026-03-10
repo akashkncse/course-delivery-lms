@@ -220,7 +220,7 @@ export function SignupForm({
       }
 
       toast.success("Account created! 🎉", {
-        description: "Welcome to LearnSphere!",
+        description: "Welcome aboard!",
       });
       window.location.href = "/dashboard";
     } catch {

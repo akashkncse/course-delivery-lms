@@ -1,12 +1,18 @@
 {
-  "name": "odoo-lms-solution",
+  "name": "course-delivery-lms",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx scripts/seed-admin.ts",
+    "db:flush": "tsx scripts/flush.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

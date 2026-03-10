@@ -117,7 +117,7 @@ export function Stats({ stats }: StatsProps) {
             Platform Stats
           </p>
           <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
-            Trusted by learners everywhere
+            Our platform at a glance
           </h2>
         </motion.div>
 

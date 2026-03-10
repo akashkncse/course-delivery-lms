@@ -410,7 +410,7 @@ export default function SiteSettingsAdmin() {
             <CardDescription>
               Set your platform name and logo. These appear across the entire
               site — the navigation bar, sidebars, footer, certificates, and
-              more. If left empty, defaults to &ldquo;LearnHub&rdquo; with a
+              more. If left empty, defaults to &ldquo;My Academy&rdquo; with a
               graduation cap icon.
             </CardDescription>
           </CardHeader>
@@ -426,7 +426,7 @@ export default function SiteSettingsAdmin() {
               </label>
               <Input
                 id="platformName"
-                placeholder="LearnHub"
+                placeholder="My Academy"
                 value={platformName}
                 onChange={(e) => setPlatformName(e.target.value)}
                 maxLength={100}
@@ -490,7 +490,7 @@ export default function SiteSettingsAdmin() {
                   </div>
                 )}
                 <span className="text-lg font-bold tracking-tight">
-                  {platformName.trim() || "LearnHub"}
+                  {platformName.trim() || "My Academy"}
                 </span>
               </div>
             </div>
@@ -698,9 +698,9 @@ export default function SiteSettingsAdmin() {
             </CardTitle>
             <CardDescription>
               Manage the testimonials shown on your landing page. Add real
-              reviews from learners to build trust. If no testimonials are
-              added, default placeholder testimonials will be displayed. Maximum
-              20 testimonials.
+              reviews from your learners to build trust. If none are added, a
+              placeholder message will be shown instead. Maximum 20
+              testimonials.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -708,11 +708,11 @@ export default function SiteSettingsAdmin() {
               <div className="rounded-lg border border-dashed border-border/60 bg-muted/20 p-8 text-center">
                 <MessageSquareQuote className="size-10 mx-auto text-muted-foreground/40 mb-3" />
                 <p className="text-sm text-muted-foreground mb-1">
-                  No custom testimonials yet
+                  No testimonials yet
                 </p>
                 <p className="text-xs text-muted-foreground mb-4">
-                  Default testimonials will be shown on the landing page. Add
-                  your own to personalize.
+                  A placeholder will be shown on the landing page until you add
+                  your own testimonials here.
                 </p>
                 <Button
                   variant="outline"
@@ -818,7 +818,7 @@ export default function SiteSettingsAdmin() {
                                 Name *
                               </label>
                               <Input
-                                placeholder="Sarah Chen"
+                                placeholder="John Doe"
                                 value={t.name}
                                 onChange={(e) =>
                                   updateTestimonial(
@@ -835,7 +835,7 @@ export default function SiteSettingsAdmin() {
                                 Role / Title
                               </label>
                               <Input
-                                placeholder="Software Developer"
+                                placeholder="Student"
                                 value={t.role}
                                 onChange={(e) =>
                                   updateTestimonial(
@@ -942,7 +942,7 @@ export default function SiteSettingsAdmin() {
               {testimonials.length > 0
                 ? `${testimonials.length} testimonial${testimonials.length !== 1 ? "s" : ""} configured. `
                 : ""}
-              Leave empty to use default testimonials on the landing page.
+              Leave empty to show a placeholder on the landing page.
             </p>
           </CardContent>
         </Card>
@@ -1309,7 +1309,7 @@ export default function SiteSettingsAdmin() {
                     </div>
                   )}
                   <span className="text-sm font-bold">
-                    {platformName.trim() || "LearnHub"}
+                    {platformName.trim() || "My Academy"}
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed max-w-sm">

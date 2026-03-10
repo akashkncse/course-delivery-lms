@@ -20,7 +20,7 @@ interface NavbarProps {
   logoUrl?: string | null;
 }
 
-export function Navbar({ platformName = "LearnHub", logoUrl }: NavbarProps) {
+export function Navbar({ platformName = "My Academy", logoUrl }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const mounted = useMounted();

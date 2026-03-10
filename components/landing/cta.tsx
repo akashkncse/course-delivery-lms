@@ -11,7 +11,10 @@ interface CTAProps {
   platformName?: string;
 }
 
-export function CTA({ featuredImageUrl, platformName = "LearnHub" }: CTAProps) {
+export function CTA({
+  featuredImageUrl,
+  platformName = "My Academy",
+}: CTAProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
@@ -38,16 +41,15 @@ export function CTA({ featuredImageUrl, platformName = "LearnHub" }: CTAProps) {
               </div>
 
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-                Ready to transform the way you{" "}
+                Ready to start{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  learn?
+                  learning?
                 </span>
               </h2>
 
               <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Join our community of learners who are earning points, unlocking
-                badges, and making education an adventure. Sign up for free and
-                start your first course in minutes.
+                Create a free account and start your first course in minutes.
+                Earn points, unlock badges, and track your progress as you go.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -109,7 +111,7 @@ export function CTA({ featuredImageUrl, platformName = "LearnHub" }: CTAProps) {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Earn rewards instantly
+                  Track your progress
                 </span>
               </div>
             </motion.div>

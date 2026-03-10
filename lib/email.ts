@@ -14,9 +14,7 @@ export async function sendOtpEmail(
   type: "signup" | "password_reset",
 ) {
   const subject =
-    type === "signup"
-      ? "Verify your email – LearnSphere"
-      : "Reset your password – LearnSphere";
+    type === "signup" ? "Verify your email" : "Reset your password";
 
   const heading =
     type === "signup" ? "Verify Your Email" : "Reset Your Password";
@@ -63,7 +61,7 @@ export async function sendOtpEmail(
                 </tr>
               </table>
               <p style="margin:24px 0 0;font-size:12px;color:#a1a1aa;">
-                &copy; LearnSphere. All rights reserved.
+                &copy; ${new Date().getFullYear()} All rights reserved.
               </p>
             </td>
           </tr>
@@ -73,7 +71,7 @@ export async function sendOtpEmail(
   `;
 
   const mailOptions = {
-    from: `"LearnSphere" <${process.env.SMTP_EMAIL}>`,
+    from: `${process.env.SMTP_EMAIL}`,
     to: email,
     subject,
     html,

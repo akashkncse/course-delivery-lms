@@ -7,7 +7,7 @@ interface Branding {
   logoUrl: string | null;
 }
 
-const DEFAULT_PLATFORM_NAME = "LearnHub";
+const DEFAULT_PLATFORM_NAME = "My Academy";
 const DEFAULT_BRANDING: Branding = {
   platformName: DEFAULT_PLATFORM_NAME,
   logoUrl: null,

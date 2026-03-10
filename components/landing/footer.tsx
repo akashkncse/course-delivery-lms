@@ -36,10 +36,10 @@ const defaultFooterLinks: FooterLinksData = {
 };
 
 const defaultTagline =
-  "A gamified learning platform that makes education fun and rewarding. Earn points, unlock badges, and climb the leaderboard as you learn.";
+  "A modern learning platform for delivering courses, quizzes, and certificates — all in one place.";
 
 export function Footer({
-  platformName = "LearnHub",
+  platformName = "My Academy",
   logoUrl,
   tagline,
   links,
@@ -91,25 +91,6 @@ export function Footer({
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {footerTagline}
             </p>
-
-            {/* Social proof mini */}
-            <div className="mt-6 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {["bg-blue-500", "bg-emerald-500", "bg-amber-500"].map(
-                  (color, i) => (
-                    <div
-                      key={i}
-                      className={`flex size-7 items-center justify-center rounded-full border-2 border-background text-[10px] font-bold text-white ${color}`}
-                    >
-                      {String.fromCharCode(65 + i)}
-                    </div>
-                  ),
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Trusted by learners worldwide
-              </p>
-            </div>
           </div>
 
           {/* Platform links */}
@@ -197,9 +178,7 @@ export function Footer({
             &copy; {currentYear} {platformName}. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <span>Built with</span>
-            <span className="text-red-500">❤</span>
-            <span>for learners everywhere</span>
+            <span>Powered by Course Delivery LMS</span>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-# LearnSphere LMS — API Reference
+# Course Delivery LMS — API Reference
 
-Complete reference for all REST API endpoints in the LearnSphere LMS platform. All endpoints are served under `/api/` and follow Next.js App Router conventions.
+Complete reference for all REST API endpoints in the Course Delivery LMS platform. All endpoints are served under `/api/` and follow Next.js App Router conventions.
 
 ---
 
@@ -1053,12 +1053,12 @@ Get public site settings for the landing page.
 ```json
 {
   "settings": {
-    "platformName": "LearnSphere",
+    "platformName": "My Academy",
     "logoUrl": "https://...",
     "heroImageUrl": "https://...",
     "featuredImageUrl": "https://...",
     "currency": "INR",
-    "footerTagline": "Empowering learners worldwide.",
+    "footerTagline": "A modern learning platform for delivering courses, quizzes, and certificates.",
     "footerLinks": {
       "platform": [
         { "label": "Courses", "href": "/dashboard/courses" }
