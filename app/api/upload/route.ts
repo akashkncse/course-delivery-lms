@@ -33,14 +33,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const token = process.env.BLOB_READ_WRITE_TOKEN;
-    if (!token) {
-      return NextResponse.json(
-        { error: "Upload service not configured. Add BLOB_READ_WRITE_TOKEN to .env.local" },
-        { status: 500 }
-      );
-    }
-
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
     const folder = (formData.get("folder") as string) || "uploads";
@@ -55,7 +47,7 @@ export async function POST(request: NextRequest) {
         {
           error: `File type "${file.type}" is not allowed. Allowed: images (jpg, png, webp, gif, svg) and documents (pdf, doc, docx, ppt, pptx, xls, xlsx, txt).`,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -66,8 +58,10 @@ export async function POST(request: NextRequest) {
 
     if (file.size > maxSize) {
       return NextResponse.json(
-        { error: `File is too large. Maximum size for ${isImage ? "images" : "documents"} is ${maxLabel}.` },
-        { status: 400 }
+        {
+          error: `File is too large. Maximum size for ${isImage ? "images" : "documents"} is ${maxLabel}.`,
+        },
+        { status: 400 },
       );
     }
 
@@ -76,9 +70,9 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now();
     const pathname = `${folder}/${timestamp}-${originalName}`;
 
+    // @vercel/blob reads BLOB_READ_WRITE_TOKEN from process.env automatically
     const blob = await put(pathname, file, {
       access: "public",
-      token,
     });
 
     return NextResponse.json({
@@ -89,9 +83,26 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Upload error:", error);
+
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Upload failed. Please try again.";
+
+    // Surface missing-token errors clearly
+    if (message.includes("BLOB_READ_WRITE_TOKEN")) {
+      return NextResponse.json(
+        {
+          error:
+            "Blob storage is not configured. Set the BLOB_READ_WRITE_TOKEN environment variable.",
+        },
+        { status: 500 },
+      );
+    }
+
     return NextResponse.json(
       { error: "Upload failed. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -103,31 +114,38 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const token = process.env.BLOB_READ_WRITE_TOKEN;
-    if (!token) {
-      return NextResponse.json(
-        { error: "Upload service not configured. Add BLOB_READ_WRITE_TOKEN to .env.local" },
-        { status: 500 }
-      );
-    }
-
     const { url } = await request.json();
 
     if (!url || typeof url !== "string") {
       return NextResponse.json(
         { error: "A valid blob URL is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    await del(url, { token });
+    // @vercel/blob reads BLOB_READ_WRITE_TOKEN from process.env automatically
+    await del(url);
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Delete error:", error);
+
+    const message =
+      error instanceof Error ? error.message : "Failed to delete file.";
+
+    if (message.includes("BLOB_READ_WRITE_TOKEN")) {
+      return NextResponse.json(
+        {
+          error:
+            "Blob storage is not configured. Set the BLOB_READ_WRITE_TOKEN environment variable.",
+        },
+        { status: 500 },
+      );
+    }
+
     return NextResponse.json(
       { error: "Failed to delete file." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
